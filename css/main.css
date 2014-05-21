@@ -1,0 +1,121 @@
+/* main.css */
+
+body {
+	font-family: comic;	
+	padding: 0;
+	margin: 0;
+	background-image: url("../images/back.jpg")
+}
+
+#container {
+	padding:10px;
+	background-color: #F8F5E6;
+	width:600px;
+	height:100%;
+	margin:0 auto 0 auto;
+}
+
+/* HEADER STYLES */
+
+#title {
+	color:#DA5E62;
+}
+
+#header {
+	border-bottom: 1px solid #DA5E62;
+}
+
+/* FORM STYLES */
+
+#form {
+	width:230px;	
+	margin:0;
+}
+.form-group {
+	width:230px;
+	margin:10px 0 0 20px;
+}
+
+.item label {
+	float:left;
+}
+
+.form-group input {
+	height:30px;
+	width:200px;
+	font-family: comic;
+	font-size: 16px;
+	color:#B66567;
+	padding:5px;
+	float:left;
+}
+
+.item {
+	clear:both;
+	margin:10px 0;
+}
+
+#button {
+	font-family: comic;
+	font-size: 20px;
+	color:#F8F5E6;
+	text-align: center;
+	width:100px;
+	margin: 10px 0 0 0;
+	cursor: hand;
+}
+
+
+/* STORY STYLES */
+
+#story {
+	position:relative;
+	display:none;
+	top: 20px;
+	left: 0;
+	height: 350px;
+	width: 500px;
+	padding-right: 50px;
+	padding-left: 10px; 
+	margin-bottom: 100px;
+	overflow: scroll;
+	border:1px solid #666;
+}
+
+#story span {
+	text-decoration: underline;
+}
+
+#story h3{
+	margin:0;
+	padding:0;
+}
+
+#story p {
+	font-size: 16px;
+}
+
+#man_reading {
+	width:150px;
+	float:right;
+}
+
+#reaper {
+	float:left;
+	width:150px;
+	margin:10px 10px 10px 0;
+}
+
+#play_again {
+	font-family: comic;
+	font-size: 20px;
+	color:#F8F5E6;
+	text-align: center;
+	width:200px;
+	margin: 10px 0 10px 0;
+	cursor: hand;
+}
+
+
+
+
