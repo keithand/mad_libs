@@ -83,11 +83,11 @@ body {
 	top: 20px;
 	left: 0;
 	height: 350px;
-	width: 500px;
+	width: 535px;
 	padding-right: 50px;
 	padding-left: 10px; 
 	margin-bottom: 100px;
-	overflow: scroll;
+	overflow-y: scroll;
 	border:1px solid #666;
 }
 
