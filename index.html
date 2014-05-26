@@ -59,7 +59,33 @@
 
 	</form>
 
-	<div class="results"></div>
+	<div id="search">
+		<h3>Search</h3>
+		<form class="get_search">
+			<input type="text" class="searched" placeholder="Search for..." name="search" size="30" autofocus required>
+			<input type="submit" value="Submit" class="submit btn btn-primary btn-md">
+		</form>
+
+		<div class="info">
+			
+		</div>
+
+		<div class="results template hidden">
+			<dl class="searchDisplay">
+				<dt>Headline:</dt>
+					<dd class="headline"></dd>
+				<dt>Abstract:</dt>
+					<dd class="abstract"></dd>
+				<dt>Snippet:</dt>
+					<dd class"snippet"></dd>
+				<dt>Full Length Article:</dt>
+					<dd class="url"></dd>
+			</dl> <!-- CLOSING OF .SEARCHDISPLAY -->
+			
+		</div> <!-- CLOSING OF .RESULTS -->
+
+	</div> <!-- CLOSING OF #SEARCH -->
+
 
 	
 	<div id="story">

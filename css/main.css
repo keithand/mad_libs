@@ -34,11 +34,12 @@ body {
 
 }
 
-/* FORM STYLES */
+/* WORD IDENTIFICATION STYLES */
 
 #form {
 	width:230px;	
 	margin:0;
+	float:left;
 }
 .form-group {
 	width:230px;
@@ -74,6 +75,60 @@ body {
 	cursor: hand;
 }
 
+/* SEARCH STYLES */
+
+#search{
+	float:left;
+	margin: -20px 0 0 10px;
+	width:350px;
+	border: 1px solid #000;
+	height:100%;
+}
+
+#search h3 {
+	text-align: center;
+	font-size: 28px;
+	color: #DA5E62;
+}
+
+.get_search{
+	width:350px;
+	margin-left: 10px;
+	height:40px;
+}
+
+.searched {
+	height:30px;
+	width:200px;
+	float:left;
+	font-family: 'Gloria Hallelujah', cursive;
+	text-align: center;
+	font-size: 14px;
+	color:#B66567;
+	padding:5px;
+}
+
+.submit {
+	font-family: 'Gloria Hallelujah', cursive;
+	float:left;
+	font-size: 14px;
+	color:#F8F5E6;
+	text-align: center;
+	width:70px;
+	margin: -6px 0 10px 10px;
+	cursor: hand;
+}
+
+/* RESULTS STYLE*/
+
+.results {
+	width: 350px;
+	height: 100%;
+}
+
+.info {
+	margin-left: 15px;
+}
 
 /* STORY STYLES */
 
@@ -125,6 +180,9 @@ body {
 	cursor: hand;
 }
 
+.hidden {
+	display:none;
+}
 
 
 
