@@ -50,11 +50,9 @@ var showSearchData = function (query, resultsNum) {
 };
 
 //DISPLAY THE DATA FROM THE JSON ARRAY IN THE HTML
-var showData = function (result) {
+var showData = function (i, result) {
 
-	$('.searchDisplay').show('fast');
-
-	var template = $(".searchDisplay").clone();
+	var template = $(".results .template .searchDisplay").clone();
 
 	var headline = template.find('.headline');
 	headline.text(result.response.docs.headline);
@@ -63,10 +61,15 @@ var showData = function (result) {
 	abstract.text(result.response.docs.abstract);
 
 	var snippet = template.find('.snippet');
-	abstract.text(result.response.docs.snippet);	
+	snippet.text(result.response.docs.snippet);	
 
 	var url = template.find('.url');
-	abstract.text(result.response.docs.url);
+	url.text(result.response.docs.url);
+
+	console.log(result)
+	console.log(result.response.docs.headline)
+
+	$('.searchDisplay').show('fast');
 
 	return result;
 };
@@ -81,28 +84,24 @@ var findSearch = function(search){
 					sort: 'creation'};
 
 	var result = $.ajax({
-		url: 'http://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + search + '&page=2&sort=oldest&api-key=a1eeb62c8df499298c449983e6967154:3:69423736',
+		url: 'http://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + search + '&fq=source:("The New York Times")&page=0&sort=oldest&api-key=a1eeb62c8df499298c449983e6967154:3:69423736',
 		type: 'GET',
 		dataType: 'json',
 		data: search,
 	})
 	.done(function(result) {
 		console.log("success");
-		console.log(result);
+		console.log(result.response);
 		var searchResults = showSearchData(request.tagged, result.response.docs.length );
 		$('.info').html(searchResults);
 
 		$.each(result.response.docs, function(i, item) {
-			var data = showData(result);
-			$('.searchDisplay').append(data);
+			var showing = showData(item, result);
+			$('.searchDisplay').append(showing);
 		});
-	})
-	.fail(function() {
+	}).fail(function() {
 		console.log("error");
 		$('.results').html('This feature is not working. :-(');
-	})
-	.always(function() {
-		console.log("complete");
 	});
 	
 
