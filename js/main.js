@@ -4,7 +4,6 @@ $(document).ready(function(){
 	
 	$('.get_search').submit(function(event){
 		event.preventDefault(event);
-		$('.results').html('');
 		var search = $(this).find("input[name='search']").val();
 		console.log(search);
 		findSearch(search);
@@ -52,26 +51,19 @@ var showSearchData = function (query, resultsNum) {
 //DISPLAY THE DATA FROM THE JSON ARRAY IN THE HTML
 var showData = function (i, result) {
 
-	var template = $(".results .template .searchDisplay").clone();
+	$('#searchDisplay').show();
+	$('.paragraph').hide();
+
+
+	var template = $("#searchDisplay").clone();
 
 	var headline = template.find('.headline');
-	headline.text(result.response.docs.headline);
+	headline.text(result.headline.main);
 
-	var abstract = template.find('.abstract');
-	abstract.text(result.response.docs.abstract);
-
-	var snippet = template.find('.snippet');
-	snippet.text(result.response.docs.snippet);	
-
-	var url = template.find('.url');
-	url.text(result.response.docs.url);
-
-	console.log(result)
-	console.log(result.response.docs.headline)
-
-	$('.searchDisplay').show('fast');
-
-	return result;
+	var paragraph = template.find('.paragraph');
+	paragraph.text(result.lead_paragraph);
+	
+	return template;
 };
 
 
@@ -84,21 +76,32 @@ var findSearch = function(search){
 					sort: 'creation'};
 
 	var result = $.ajax({
-		url: 'http://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + search + '&fq=source:("The New York Times")&page=0&sort=oldest&api-key=a1eeb62c8df499298c449983e6967154:3:69423736',
+		url: 'http://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + search + '&fq=source.contains("abstract")&fq=document_type:("article")&fq=word_count("500")&page=0&sort=oldest&api-key=a1eeb62c8df499298c449983e6967154:3:69423736',
 		type: 'GET',
 		dataType: 'json',
 		data: search,
 	})
 	.done(function(result) {
 		console.log("success");
-		console.log(result.response);
+		console.log(result);
 		var searchResults = showSearchData(request.tagged, result.response.docs.length );
 		$('.info').html(searchResults);
 
 		$.each(result.response.docs, function(i, item) {
-			var showing = showData(item, result);
-			$('.searchDisplay').append(showing);
+			
+			var data = showData(i, item);
+			$('.results').append(data);
 		});
+		$('.results').removeClass('hidden');
+		$('#searchDisplay').first().remove();
+
+		$('#searchDisplay').on('click', function (result) {
+			event.preventDefault(event);
+		    event.stopPropagation();
+			$(this).children('.paragraph').show();
+			$(this).toggle();
+		});
+
 	}).fail(function() {
 		console.log("error");
 		$('.results').html('This feature is not working. :-(');
