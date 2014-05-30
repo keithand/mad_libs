@@ -39,6 +39,12 @@ $(document).ready(function(){
 
 			};
 		});
+
+	$(document).bind('click', '.headline', function (event) {
+		event.preventDefault(event);
+		$(event.target).closest('p.paragraph').show();
+		//$(this).toggle();
+	});
 });
 
 //GETTING JSON DATA TO APPEAR IN HTML
@@ -59,6 +65,8 @@ var showData = function (i, result) {
 
 	var headline = template.find('.headline');
 	headline.text(result.headline.main);
+	headline.addClass('count_' + i);
+
 
 	var paragraph = template.find('.paragraph');
 	paragraph.text(result.lead_paragraph);
@@ -95,21 +103,12 @@ var findSearch = function(search){
 		$('.results').removeClass('hidden');
 		$('#searchDisplay').first().remove();
 
-		$('#searchDisplay').on('click', function (result) {
-			event.preventDefault(event);
-		    event.stopPropagation();
-			$(this).children('.paragraph').show();
-			$(this).toggle();
-		});
-
 	}).fail(function() {
 		console.log("error");
 		$('.results').html('This feature is not working. :-(');
 	});
 	
-
 };
-
 
 
 

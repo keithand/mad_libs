@@ -81,7 +81,7 @@ body {
 #search{
 	float:left;
 	margin: -20px 0 0 10px;
-	width:550px;
+	width:570px;
 	/*border: 1px solid #000; */
 	height:100%;
 }
@@ -131,6 +131,8 @@ body {
 	float:left;
 	clear:both;
 	margin: 5px 0 0 0;
+	width:100%;
+	border-bottom: 1px solid #000
 }
 
 #headline {
@@ -161,8 +163,10 @@ body {
 
 .results {
 	width: 550px;
-	height: 300px;
+	height: 400px;
 	overflow: scroll;
+	border:1px solid #000;
+	background-color: #FFE8C8;
 }
 .results:first-child {
 	display:none;
