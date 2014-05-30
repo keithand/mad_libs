@@ -40,11 +40,6 @@ $(document).ready(function(){
 			};
 		});
 
-	$(document).bind('click', '.headline', function (event) {
-		event.preventDefault(event);
-		$(event.target).closest('p.paragraph').show();
-		//$(this).toggle();
-	});
 });
 
 //GETTING JSON DATA TO APPEAR IN HTML
@@ -70,6 +65,12 @@ var showData = function (i, result) {
 
 	var paragraph = template.find('.paragraph');
 	paragraph.text(result.lead_paragraph);
+
+	$(document).bind('click', '.headline', function (event) {
+		 event.preventDefault(event);
+		$(event.target).closest('p.paragraph').show();
+		//$(this).toggle();
+	});
 	
 	return template;
 };
