@@ -130,39 +130,37 @@ body {
 	position: relative; 
 	float:left;
 	clear:both;
-	margin: 5px 0 0 0;
-	width:100%;
+	margin: 5px 10px 5px 10px;
+	width:540px;
 	border-bottom: 1px solid #000
 }
 
 #headline {
-	display:block;
+	display:inline;
 	width:90px;
 	float:left;
 	margin: 0;
+
 }
 
 #searchDisplay dd {
-	float:left;
 	margin-left: 0;
 	font-size: 14px;
 }
 
-#searchDisplay.paragraph{
-	position: relative;
-	top: -200px;
-	left:-200px;
-	width:500px;
-	height: 400px;
+#show_paragraph{
+	display: block;
+	width:520px;
 }
 
 .headline {
-	float:left;
 	clear:both;
+	display: block;
+	width:520px;
 }
 
 .results {
-	width: 550px;
+	width: 540px;
 	height: 400px;
 	overflow: scroll;
 	border:1px solid #000;

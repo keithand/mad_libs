@@ -71,10 +71,16 @@
 
 		<div class="results template hidden">
 			<dl id="searchDisplay">
-				<p id="headline">Headline:</p>
+				<p id="headline">Headline</p>
 					<dd>
 						<a href="#" class="headline"></a>
-						<p class="paragraph"></p>
+						
+						<div id="show_paragraph">
+							<form>
+								<p class="paragraph"></p>				
+								<button type="submit" id="use" class="btn btn-primary btn-md">Use This!</button>
+							</form>
+						</div>
 					</dd>
 			</dl> <!-- CLOSING OF .SEARCHDISPLAY -->
 			
@@ -85,16 +91,9 @@
 
 	
 	<div id="story">
-		<h3>Charly and the Reaper</h3>
-
-		<img alt="Charly reading" src="images/man_reading.jpg" id="man_reading" />
-
-		<p>Charly was sitting in his livingroom in his easy chair <span class="verb_ing"></span> a book. It was dark outside, and a light breeze was blowing. All was <span class="adjective"></span> and quiet, a nice evening for reading a book. Then he heard a sound, <span class="sound"></span>, but he had not a clock that made a noise. Then it went away, and all was quiet, again. No other noise. He continued to read his book. Soon, he put his <span class="noun"></span> in his book, laid it on the side table, and stood up. He decided it was time for bed, so he went to his bedroom, changed into his pajams, washed his teeth, and went to bed. All was well.</p>
-
-		<img alt="Grim Reaper" src="images/reaper.jpg" id="reaper" />
-
-		<p>The next evening he again was sitting in his livingroom, reading the selfsame book. The book really held his attention. Again, he hears the <span class="sound"></span>. Then he hears the sounds of heavy footsteps in the house, as if the person was large and set on his <span class="man_noun"></span>. Suddenly the house went dark, no lights, no streetlights, no nothing. The footsteps stopped close to his chair. He turned, looked, and all he saw were these two glowing yellow eyes staring back at him, the incessant <span class="sound"></span>ing, and a feeling of <span class="adjective2"></span>, not an atmosphere <span class="adjective2"></span>, but the <span class="adjective2"></span> of death, and the smell of earth, wet earth. A sudden chill came over him, he froze, fear gripping like a cold, wet hand. He couldn't move, although he wanted to <span class="verb"></span>. Then came this voice, a cold raspy voice, "It is time, Charly. I have come for you." Charly wanted to scream, but it stuck in his throat the fear gripped him so bad. Suddenly, a cold, wet hand reached out and grabbed his arm, "Charly, it is time!" Then, just as he felt that he was going to die... </p>
-
+		<section id="paragraph_story">
+			<p class="paragraph"></p>
+		</section>
 		<button type="submit" id="play_again" class="btn btn-primary btn-md" >Play Again?</button>
 
 	</div>

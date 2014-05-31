@@ -1,7 +1,38 @@
 // main.js
 
+var paragraphSelect
+
 $(document).ready(function(){	
 	
+	$(document).on('click', '.headline', function (event) {
+		 event.preventDefault(event);
+		$(this).siblings('#show_paragraph').toggle();
+	});
+
+	$(document).on('click', '#use', function (event) {
+		var para = $(this).siblings('.paragraph');
+		var already = $('#paragraph_story .paragraph');
+		var paragraphSelect;
+		console.log(para);
+
+		event.preventDefault(event);
+		para.clone().appendTo('#paragraph_story');
+		already.first().remove();
+		
+		var split = para.innerText.split(" ");
+		console.log(split);
+
+		$('#search').fadeOut('slow', function() {
+			$(this).hide();	
+		});
+
+		$('#story').fadeIn('slow', function() {
+
+		});
+
+	});
+
+
 	$('.get_search').submit(function(event){
 		event.preventDefault(event);
 		var search = $(this).find("input[name='search']").val();
@@ -53,8 +84,7 @@ var showSearchData = function (query, resultsNum) {
 var showData = function (i, result) {
 
 	$('#searchDisplay').show();
-	$('.paragraph').hide();
-
+	$('#show_paragraph').hide();
 
 	var template = $("#searchDisplay").clone();
 
@@ -62,17 +92,11 @@ var showData = function (i, result) {
 	headline.text(result.headline.main);
 	headline.addClass('count_' + i);
 
-
 	var paragraph = template.find('.paragraph');
 	paragraph.text(result.lead_paragraph);
 
-	$(document).bind('click', '.headline', function (event) {
-		 event.preventDefault(event);
-		$(event.target).closest('p.paragraph').show();
-		//$(this).toggle();
-	});
-	
 	return template;
+	
 };
 
 
@@ -85,7 +109,7 @@ var findSearch = function(search){
 					sort: 'creation'};
 
 	var result = $.ajax({
-		url: 'http://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + search + '&fq=source.contains("abstract")&fq=document_type:("article")&fq=word_count("500")&page=0&sort=oldest&api-key=a1eeb62c8df499298c449983e6967154:3:69423736',
+		url: 'http://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + search + '&fq=source.contains("abstract")&fq=document_type:("article")&fq=word_count("1000")&page=0&sort=oldest&api-key=a1eeb62c8df499298c449983e6967154:3:69423736',
 		type: 'GET',
 		dataType: 'json',
 		data: search,
@@ -97,9 +121,8 @@ var findSearch = function(search){
 		$('.info').html(searchResults);
 
 		$.each(result.response.docs, function(i, item) {
-			
-			var data = showData(i, item);
-			$('.results').append(data);
+				var data = showData(i, item);
+				$('.results').append(data);
 		});
 		$('.results').removeClass('hidden');
 		$('#searchDisplay').first().remove();
