@@ -11,6 +11,7 @@ $(document).ready(function(){
 
 	$(document).on('click', '#use', function (event) {
 		var para = $(this).siblings('.paragraph');
+		var paraStr = para.text();
 		var already = $('#paragraph_story .paragraph');
 		var paragraphSelect;
 		console.log(para);
@@ -19,8 +20,9 @@ $(document).ready(function(){
 		para.clone().appendTo('#paragraph_story');
 		already.first().remove();
 		
-		var split = para.innerText.split(" ");
+		var split = paraStr.split(" ");
 		console.log(split);
+
 
 		$('#search').fadeOut('slow', function() {
 			$(this).hide();	
