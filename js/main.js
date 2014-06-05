@@ -22,7 +22,15 @@ $(document).ready(function(){
 		
 		var split = paraStr.split(" ");
 		console.log(split);
+		console.log(split[0]);
 
+		for (var i = 0; i <= split.length; i++){
+			if( i % 9  === 0){
+				split[i].text("___");
+				console.log(split[9]);
+				continue;
+			};
+		};
 
 		$('#search').fadeOut('slow', function() {
 			$(this).hide();	
@@ -135,6 +143,34 @@ var findSearch = function(search){
 	});
 	
 };
+
+// THIS FUNCTION CALLS OUT TO THE MERRIAM-WEBSTER API, GETS DATA
+var identifyPOS = function (words){
+
+	var request =	{tagged: words,
+					site: 'MERRIAM-WEBSTER',
+					order: 'decs',
+					sort: 'creation'};
+
+	var result_two = $.ajax({
+		url: 'http://www.dictionaryapi.com/api/v1/references/collegiate/xml/pizza?key=70efe857-4948-45bc-8a8a-c899c7278d3d',
+		type: 'GET',
+		dataType: 'XML',
+		data: words,
+	})
+	.done(function() {
+		console.log("success for DICTIONARY");
+		console.log(result_two);
+	})
+	.fail(function() {
+		console.log("error for DICTIONARY");
+	})
+	.always(function() {
+		console.log("complete");
+	});
+	
+};
+
 
 
 
