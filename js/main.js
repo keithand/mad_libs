@@ -1,6 +1,8 @@
 // main.js
 
-var paragraphSelect
+var paragraphSelect;
+var blank;
+var dictionaryArray = [];
 
 $(document).ready(function(){	
 	
@@ -10,26 +12,36 @@ $(document).ready(function(){
 	});
 
 	$(document).on('click', '#use', function (event) {
-		var para = $(this).siblings('.paragraph');
-		var paraStr = para.text();
+		event.preventDefault(event);
+		var para = $(this).siblings('.paragraph').text().split(" ");
+		//var paraStr = para.text();  
 		var already = $('#paragraph_story .paragraph');
 		var paragraphSelect;
 		console.log(para);
 
 		event.preventDefault(event);
-		para.clone().appendTo('#paragraph_story');
-		already.first().remove();
 		
-		var split = paraStr.split(" ");
-		console.log(split);
-		console.log(split[0]);
-
-		for (var i = 0; i <= split.length; i++){
-			if( i % 9  === 0){
-				split[i].text("___");
-				console.log(split[9]);
-				continue;
+		var displayPara = function (para, already) {
+			for (var i=0; i < para.length; i++){
+				$('#paragraph_story').append( para[i] + " " );
 			};
+		};
+
+		displayPara(para, already);
+
+		for (var i = 0; i <= para.length; i++){
+			
+				if(i % 4 == 0 && para[i].length > 3){
+					console.log(para[i]);
+					var blank = para[i];
+					dictionaryArray.push(blank);
+					console.log(dictionaryArray);
+				};
+				//blanks();
+
+				//console.log(split[9]);
+				continue;
+		
 		};
 
 		$('#search').fadeOut('slow', function() {
